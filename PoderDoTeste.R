@@ -104,10 +104,10 @@ poder_do_teste <- function(alpha, mi, variance, type, n, rng){
 
 poder_do_teste(0.005, 500, 400, "double", 100, 475:525)
 
-p1 <- poder_do_teste(0.1, 500, 400, "double", 20, 475:525)
-p2 <- poder_do_teste(0.1, 500, 400, "double", 100, 475:525)
-p3 <- poder_do_teste(0.05, 500, 400, "double", 20, 475:525)
-p4 <- poder_do_teste(0.05, 500, 400, "double", 100, 475:525)
+p1 <- poder_do_teste(0.01, 500, 400, "double", 20, 475:525)
+p2 <- poder_do_teste(0.01, 500, 400, "double", 100, 475:525)
+p3 <- poder_do_teste(0.01, 500, 400, "less", 20, 475:525)
+p4 <- poder_do_teste(0.01, 500, 400, "greater", 100, 475:525)
 
 grid.arrange(p1, p2, p3, p4, ncol=2)
 
