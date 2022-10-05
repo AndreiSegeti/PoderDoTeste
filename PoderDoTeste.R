@@ -95,7 +95,11 @@ poder_do_teste <- function(alpha, mu, variance, type, n, rng){
     power_list <- append(power_list, b(i, variance/n, type, boundaries_f))
   }
   power_list_2 <- data.frame(power = power_list, mu = rng)
-  p <- ggplot(data = power_list_2, aes(x=rng, y=power)) + geom_line() + geom_hline(yintercept=alpha, linetype="dotted")
+  p <- ggplot(data = power_list_2, aes(x=rng, y=power)) + geom_line() + 
+        geom_hline(yintercept=alpha, linetype="dotted") + 
+        annotate(geom="text", x=520, y=0.1, label=sprintf("alpha: %s ", alpha),color="red") +
+        annotate(geom="text", x=520, y=0.25, label=sprintf("n: %s ", n),color="blue")
+    
   return(p)
 }
 
@@ -105,5 +109,10 @@ p1 <- poder_do_teste(0.01, 500, 400, "double", 20, 475:525)
 p2 <- poder_do_teste(0.01, 500, 400, "double", 100, 475:525)
 p3 <- poder_do_teste(0.01, 500, 400, "less", 20, 475:525)
 p4 <- poder_do_teste(0.01, 500, 400, "greater", 100, 475:525)
+p5 <- poder_do_teste(0.05, 500, 400, "double", 20, 475:525)
+p6 <- poder_do_teste(0.05, 500, 400, "double", 100, 475:525)
+p7 <- poder_do_teste(0.05, 500, 400, "less", 20, 475:525)
+p8 <- poder_do_teste(0.05, 500, 400, "greater", 100, 475:525)
 
-grid.arrange(p1, p2, p3, p4, ncol=2)
+
+grid.arrange(p1, p2, p3, p4, p5, p6, p7, p8, ncol=4)
